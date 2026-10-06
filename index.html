@@ -182,6 +182,7 @@
         .btn-history-del:hover { background: #dc2626; }
         .empty-state { text-align: center; color: #64748b; font-weight: bold; font-size: 18px; margin-top: 50px; }
         
+        /* Custom Search Input */
         .search-bar-container { display: flex; gap: 10px; margin-bottom: 20px; }
         .search-input { flex: 1; padding: 12px 20px; border-radius: 10px; border: 2px solid var(--border-light); font-size: 15px; font-weight: 600; outline: none; transition: 0.3s; }
         .search-input:focus { border-color: var(--theme-primary); }
@@ -316,6 +317,7 @@
                             <option value="Standard Non-AC">Standard Non-AC</option>
                             <option value="Deluxe AC" selected>Deluxe AC</option>
                             <option value="VIP Suite">VIP Suite</option>
+                            <option value="Meeting Hall">Meeting Hall</option>
                         </select>
                     </div>
                     
@@ -361,7 +363,6 @@
 
             <!-- PREVIEW PANEL -->
             <div class="admin-preview" id="view-preview">
-                
                 <!-- ZOOM CONTROLS -->
                 <div class="zoom-controls">
                     <button onclick="zoomPreview(0.05)" title="Zoom In"><i class="fa fa-search-plus"></i></button>
@@ -522,7 +523,7 @@
 
         function resetInactivityTimer() {
             clearTimeout(inactivityTimer);
-            inactivityTimer = setTimeout(autoLogout, 300000); 
+            inactivityTimer = setTimeout(autoLogout, 300000); // 5 Min
         }
 
         function autoLogout() {
@@ -621,7 +622,7 @@
             const roomNo = Math.floor(101 + Math.random() * 200).toString(); 
             const amount = (Math.floor(10 + Math.random() * 40) * 100).toString(); 
             
-            const roomTypes = ["Standard Non-AC", "Deluxe AC", "VIP Suite"];
+            const roomTypes = ["Standard Non-AC", "Deluxe AC", "VIP Suite", "Meeting Hall"];
             const paymentModes = ["Cash", "UPI", "Debit / Credit Card", "Online Transfer"];
 
             document.getElementById('inpName').value = fullName;
