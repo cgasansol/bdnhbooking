@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bardhaman Bhawan - Premium Guest Receipt</title>
+    <title>Bardhaman Bhavan - Premium Guest Receipt</title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -206,7 +206,7 @@
     <div id="splash-screen">
         <div class="splash-content">
             <img src="https://cgasansol.github.io/bunchlist/logo.png" alt="Govt Logo" crossorigin="anonymous">
-            <h1>Bardhaman Bhawan</h1>
+            <h1>Bardhaman Bhavan</h1>
             <p>Government of West Bengal</p>
             <div class="loader-line"></div>
         </div>
@@ -217,7 +217,7 @@
         <div class="login-box">
             <img src="https://cgasansol.github.io/bunchlist/logo.png" height="85" style="margin-bottom: 20px;" alt="Logo" crossorigin="anonymous">
             <h2 style="color: var(--govt-navy); font-weight: 900; margin-bottom: 5px;">Admin Login</h2>
-            <p style="color: #64748b; font-weight: 600; margin-bottom: 30px; font-size: 14px;">Bardhaman Bhawan Guest House</p>
+            <p style="color: #64748b; font-weight: 600; margin-bottom: 30px; font-size: 14px;">Bardhaman Bhavan Guest House</p>
             
             <input type="text" id="auth-userid" placeholder="Enter User ID">
             <input type="password" id="auth-pass" placeholder="Enter Password">
@@ -242,7 +242,7 @@
                 <div class="brand-left">
                     <img src="https://cgasansol.github.io/bunchlist/logo.png" alt="Govt Logo" crossorigin="anonymous">
                     <div class="brand-titles">
-                        <h1>Bardhaman Bhawan Guest House</h1>
+                        <h1>Bardhaman Bhavan Guest House</h1>
                         <h2>Official Accommodation Registry</h2>
                     </div>
                 </div>
@@ -361,7 +361,8 @@
 
             <!-- PREVIEW PANEL -->
             <div class="admin-preview" id="view-preview">
-                <!-- NEW: ZOOM CONTROLS -->
+                
+                <!-- ZOOM CONTROLS -->
                 <div class="zoom-controls">
                     <button onclick="zoomPreview(0.05)" title="Zoom In"><i class="fa fa-search-plus"></i></button>
                     <button onclick="resetZoom()" title="Reset Zoom (Normal)"><i class="fa fa-sync"></i></button>
@@ -375,9 +376,9 @@
                             <div class="receipt-header">
                                 <img src="https://cgasansol.github.io/bunchlist/logo.png" alt="Logo" class="receipt-wb-logo" crossorigin="anonymous">
                                 <div class="header-text-center">
-                                    <h1 class="receipt-title">Bardhaman Bhawan</h1>
+                                    <h1 class="receipt-title">Bardhaman Bhavan</h1>
                                     <h2 class="receipt-subtitle">Paschim Bardhaman Zilla Parishad</h2>
-                                    <div class="receipt-address">Raha Lane, Asansol Bazzar, Near Asansol South P.S, Pin - 713301</div>
+                                    <div class="receipt-address">Raha Lane, Asansol Bazar, Near Asansol South P.S, Pin - 713301</div>
                                     <div class="receipt-badge">OFFICIAL GUEST BOOKING RECEIPT</div>
                                 </div>
                                 <div id="qrcode" class="receipt-qr-box"></div>
@@ -474,7 +475,7 @@
         let serialNumber = Math.floor(100000 + Math.random() * 900000);
         let currentBookingId = "PSBZP/BDN/" + Math.floor(10000 + Math.random() * 90000);
         let qrCodeInstance = null;
-        let currentZoom = 0.60; // Initial Zoom Level
+        let currentZoom = 0.60; 
 
         // ==========================================
         // WINDOW ONLOAD, LOGIN & SPLASH SCREEN LOGIC
@@ -504,13 +505,13 @@
         // ==========================================
         function zoomPreview(step) {
             currentZoom += step;
-            if(currentZoom < 0.3) currentZoom = 0.3; // Min zoom limit
-            if(currentZoom > 1.2) currentZoom = 1.2; // Max zoom limit
+            if(currentZoom < 0.3) currentZoom = 0.3; 
+            if(currentZoom > 1.2) currentZoom = 1.2; 
             document.querySelector('.document-wrapper').style.transform = `scale(${currentZoom})`;
         }
 
         function resetZoom() {
-            currentZoom = 0.60; // Normal position
+            currentZoom = 0.60; 
             document.querySelector('.document-wrapper').style.transform = `scale(${currentZoom})`;
         }
 
@@ -521,7 +522,7 @@
 
         function resetInactivityTimer() {
             clearTimeout(inactivityTimer);
-            inactivityTimer = setTimeout(autoLogout, 300000); // 5 Min
+            inactivityTimer = setTimeout(autoLogout, 300000); 
         }
 
         function autoLogout() {
@@ -847,7 +848,7 @@
             XLSX.utils.book_append_sheet(workbook, worksheet, "Booking_History");
 
             let todayDate = new Date().toLocaleDateString('en-GB').replace(/\//g, "-");
-            XLSX.writeFile(workbook, `Bardhaman_Bhawan_Bookings_${todayDate}.xlsx`);
+            XLSX.writeFile(workbook, `Bardhaman_Bhavan_Bookings_${todayDate}.xlsx`);
         }
 
         function switchTab(tabName) {
@@ -884,7 +885,6 @@
             const formNode = document.getElementById('receiptNode'); 
             const wrapper = document.querySelector('.document-wrapper');
             
-            // Temporary scale change for high-res save
             wrapper.style.transform = "scale(1)";
             
             const originalText = btn.innerHTML;
@@ -899,7 +899,6 @@
                     link.href = canvas.toDataURL("image/png", 1.0); 
                     link.click();
                     
-                    // Reset to the current zoom level after saving
                     wrapper.style.transform = `scale(${currentZoom})`; 
                     btn.innerHTML = originalText;
                     btn.disabled = false;
